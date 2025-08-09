@@ -2,7 +2,7 @@ import { Box, Button, styled } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
-import { ALL_PRODUCTS } from "constants/products";
+import { ALL_PAGES } from "constants/products";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { Mousewheel } from "swiper";
 import ProductRandomObjects from "./Components/ProductRandomObjects";
@@ -21,10 +21,10 @@ function ProductSingle() {
   const { slug } = useParams();
   const [mainSlider, setMainSlider] = useState(null);
   const [thumbSlider, setThumbSlider] = useState(null);
-  const [bgColor, setBgColor] = useState(ALL_PRODUCTS[slug]?.variants[0].color);
+  const [bgColor, setBgColor] = useState(ALL_PAGES[slug]?.variants[0].color);
 
   const [randomObjects, setRandomObjects] = useState(
-    ALL_PRODUCTS[slug]?.variants[0].randomObjects
+    ALL_PAGES[slug]?.variants[0].randomObjects
   );
   const [prevObjects, setPrevObjects] = useState(null);
 
@@ -55,7 +55,7 @@ function ProductSingle() {
       {isMobileView && (
         <>
           <ProductThumbnails>
-            {ALL_PRODUCTS[slug]?.variants.length > 1 && (
+            {ALL_PAGES[slug]?.variants.length > 1 && (
               <Swiper
                 onSwiper={setThumbSlider}
                 onSlideChange={(e) => {
@@ -63,7 +63,7 @@ function ProductSingle() {
                 }}
                 {...thumbnailSwiperParams}
               >
-                {ALL_PRODUCTS[slug]?.variants?.map((slider) => (
+                {ALL_PAGES[slug]?.variants?.map((slider) => (
                   <SwiperSlide>
                     <img
                       className="gallery-thumb-item"
@@ -88,11 +88,11 @@ function ProductSingle() {
               setShowBackgroundTransition(true);
             }}
             onTouchEnd={(e) => {
-              setBgColor(ALL_PRODUCTS[slug]?.variants[e.activeIndex]?.color);
+              setBgColor(ALL_PAGES[slug]?.variants[e.activeIndex]?.color);
 
               setPrevObjects(randomObjects);
               setRandomObjects(
-                ALL_PRODUCTS[slug]?.variants[e.activeIndex]?.randomObjects
+                ALL_PAGES[slug]?.variants[e.activeIndex]?.randomObjects
               );
 
               setShowBackgroundTransition(false);
@@ -104,10 +104,10 @@ function ProductSingle() {
               setShowBackgroundTransition(false);
             }}
             onSlideChange={(e) => {
-              setBgColor(ALL_PRODUCTS[slug]?.variants[e.activeIndex]?.color);
+              setBgColor(ALL_PAGES[slug]?.variants[e.activeIndex]?.color);
               setPrevObjects(randomObjects);
               setRandomObjects(
-                ALL_PRODUCTS[slug]?.variants[e.activeIndex].randomObjects
+                ALL_PAGES[slug]?.variants[e.activeIndex].randomObjects
               );
               setShowBackgroundTransition(false);
               thumbSlider?.slideTo(e.activeIndex);
@@ -115,7 +115,7 @@ function ProductSingle() {
             onSwiper={setMainSlider}
             scrollbar={{ draggable: true }}
           >
-            {ALL_PRODUCTS[slug]?.variants?.map((slider, index) => (
+            {ALL_PAGES[slug]?.variants?.map((slider, index) => (
               <SwiperSlide>
                 {(slide) => (
                   <ProductSingleVariant
@@ -132,7 +132,7 @@ function ProductSingle() {
 
         {!isMobileView && (
           <>
-            {ALL_PRODUCTS[slug]?.variants.length > 1 && (
+            {ALL_PAGES[slug]?.variants.length > 1 && (
               <ProductThumbnails>
                 <Swiper
                   onSwiper={setThumbSlider}
@@ -141,7 +141,7 @@ function ProductSingle() {
                   }}
                   {...thumbnailSwiperParams}
                 >
-                  {ALL_PRODUCTS[slug]?.variants?.map((slider) => (
+                  {ALL_PAGES[slug]?.variants?.map((slider) => (
                     <SwiperSlide>
                       <img
                         className="gallery-thumb-item"
@@ -166,11 +166,11 @@ function ProductSingle() {
             />
           )}
 
-          <img class="big-image" src={ALL_PRODUCTS[slug].bigImage} alt="" />
+          <img class="big-image" src={ALL_PAGES[slug].bigImage} alt="" />
           <ProductBigImageDetails>
             <img
               class="big-image-extra-title"
-              src={ALL_PRODUCTS[slug].bigImageTitle}
+              src={ALL_PAGES[slug].bigImageTitle}
               alt=""
             />
           </ProductBigImageDetails>

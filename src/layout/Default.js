@@ -31,10 +31,6 @@ function Default() {
     i18n.changeLanguage(selectedLanguage);
   }, [i18n, selectedLanguage]);
 
-  useEffect(() => {
-    console.clear();
-    console.log("Designed and Developed By Matican Group LLC");
-  }, []);
 
   const handleChange = async (event) => {
     const path =
@@ -83,72 +79,19 @@ function Default() {
         <CSSTransition key={location.key} timeout={450} classNames="fade">
           <Box className="page">
             <Loader loading={loading} />
-            <BoxStyle isMainPage={isMainPage}>
-              {formattedLanguages && formattedLanguages?.length ? (
-                <TextFieldSelect
-                  select
-                  value={selectedLanguage}
-                  onChange={handleChange}
-                  SelectProps={{
-                    IconComponent: "",
-                  }}
-                >
-                  {formattedLanguages?.map((lang) => (
-                    <MenuItem value={lang}>
-                      <img
-                        src={ALL_LANGUAGES[lang].image}
-                        alt="dafi"
-                        width={20}
-                        height={20}
-                      />
-                    </MenuItem>
-                  ))}
-                </TextFieldSelect>
-              ) : (
-                ""
-              )}
-            </BoxStyle>
 
             <Box className="page-logo">
               <img src={dafiLogo} alt="dafi logo" id="page-logo-img" />
             </Box>
 
             <RouterOutlet />
-
-            <MaticanLink>
-              <Link href="https://maticangroup.com/" target="_blank">
-                By Matican Group LLC
-              </Link>
-            </MaticanLink>
           </Box>
         </CSSTransition>
       </TransitionGroup>
     </>
   );
 }
-const MaticanLink = styled(Box)(({ theme }) => ({
-  position: "absolute",
-  width: "100%",
-  display: "flex",
-  justifyContent: "end",
-  bottom: "10px",
-  right: "10px",
-  zIndex: 9999999,
-  a: {
-    textDecoration: "none",
-    fontSize: "9px",
-    color: "#6e6d6d",
-  },
-  [theme.breakpoints.down("md")]: {
-    justifyContent: "center",
-    bottom: "10px",
-    right: "0px",
 
-    a: {
-      fontSize: "8px",
-    },
-  },
-}));
 const TextFieldSelect = styled(TextField)(() => ({
   outline: "none !important",
 

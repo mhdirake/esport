@@ -17,7 +17,7 @@ function Products() {
 
   // eslint-disable-next-line no-unused-vars
   const t = useTranslation([
-    "lip-balm",
+    "introduction",
     "adult-wipe",
     "antioxidant-make-up-remover",
     "baby-wet-wipe",

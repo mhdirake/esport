@@ -2,8 +2,8 @@ import { Box, styled } from "@mui/material";
 
 const imagePlacement = ({ isActive, isPrev, isNext }) => {
   if (isActive) return "50%";
-  if (isPrev) return "100%";
-  if (isNext) return "0";
+  if (isPrev) return "50%";
+  if (isNext) return "50%";
 };
 
 export const SwiperWrapper = styled(Box)(
@@ -12,7 +12,7 @@ export const SwiperWrapper = styled(Box)(
 
     "> svg": {
       position: "fixed",
-      top: "50%",
+      top: "60%",
       left: "50%",
       transform: "translate(-50%, -50%)",
       zIndex: 0,
@@ -63,7 +63,7 @@ export const SwiperWrapper = styled(Box)(
       left: 0,
       top: 0,
       height: "100%",
-      background: `radial-gradient(circle, rgba(135,33,135,0) 20%, ${bgColor} 69%)`,
+      background: `radial-gradient(circle, rgba(226, 85, 226, 0) 20%, ${bgColor} 69%)`,
       transition: "all 1s",
     },
 
@@ -81,18 +81,18 @@ export const SwiperWrapper = styled(Box)(
 
     "@keyframes rotate-bg-product-1": {
       "0%": {
-        transform: "translate(-50%, -50%) rotateZ(0deg) scale(2)",
+        transform: "translate(-50%, -50%) rotateZ(0deg) scale(3)",
       },
       "100%": {
-        transform: "translate(-50%, -50%) rotateZ(120deg) scale(1.4)",
+        transform: "translate(-50%, -50%) rotateZ(120deg) scale(2.4)",
       },
     },
     "@keyframes rotate-bg-product-2": {
       "0%": {
-        transform: "translate(-50%, -50%) rotateZ(-45deg) scale(2.5)",
+        transform: "translate(-50%, -50%) rotateZ(-45deg) scale(3.5)",
       },
       "100%": {
-        transform: "translate(-50%, -50%) rotateZ(-120deg) scale(2.5)",
+        transform: "translate(-50%, -50%) rotateZ(-120deg) scale(3.5)",
       },
     },
     "@keyframes rotate-bg-product-3": {
@@ -100,7 +100,7 @@ export const SwiperWrapper = styled(Box)(
         transform: "translate(-50%, -50%) rotateZ(45deg)",
       },
       "100%": {
-        transform: "translate(-50%, -50%) rotateZ(120deg) scale(1.7)",
+        transform: "translate(-50%, -50%) rotateZ(120deg) scale(2.7)",
       },
     },
   })
@@ -256,8 +256,10 @@ export const ContentWrapper = styled(Box)(({ isActive, isPrev, isNext }) => ({
   transform: "translate(-50%, -50%)",
   display: "flex",
   alignItems: "center",
-  justifyContent: "center",
+  justifyContent: "end",
   flexDirection: "column",
+  width: "100%",
+  height: "100%"
 }));
 
 export const ProductName = styled(Box)(({ isActive }) => ({

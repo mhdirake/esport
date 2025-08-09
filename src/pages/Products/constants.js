@@ -1,5 +1,5 @@
-import { ALL_PRODUCTS } from "constants/products";
+import { ALL_PAGES } from "constants/products";
 
-export const mainSliders = Object.values(ALL_PRODUCTS).map(
+export const mainSliders = Object.values(ALL_PAGES).map(
   (product) => product
 );

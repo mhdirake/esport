@@ -31,7 +31,7 @@ function ProductSingleVariant({ image, description, title, bgColor }) {
     "water-wipes-antibacterial",
     "wet-wipes-kisses-on-baby",
     "vaseline",
-    "lip-balm"
+    "introduction"
   ]);
 
   const { slug } = useParams();
