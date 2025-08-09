@@ -1,0 +1,143 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap");
+@font-face {
+  font-display: fallback;
+  font-family: IRANSans;
+  font-style: normal;
+  font-weight: 900;
+  src: url("./fonts/eot/IRANSansWeb_Black.eot");
+  src: url("./fonts/eot/IRANSansWeb_Black.eot?#iefix") format("embedded-opentype"), url("./fonts/woff2/IRANSansWeb_Black.woff2") format("woff2"), url("./fonts/woff/IRANSansWeb_Black.woff") format("woff"), url("./fonts/ttf/IRANSansWeb_Black.ttf") format("truetype");
+}
+@font-face {
+  font-display: fallback;
+  font-family: IRANSans;
+  font-style: normal;
+  font-weight: bold;
+  src: url("./fonts/eot/IRANSansWeb_Bold.eot");
+  src: url("./fonts/eot/IRANSansWeb_Bold.eot?#iefix") format("embedded-opentype"), url("./fonts/woff2/IRANSansWeb_Bold.woff2") format("woff2"), url("./fonts/woff/IRANSansWeb_Bold.woff") format("woff"), url("./fonts/ttf/IRANSansWeb_Bold.ttf") format("truetype");
+}
+@font-face {
+  font-display: fallback;
+  font-family: IRANSans;
+  font-style: normal;
+  font-weight: 500;
+  src: url("./fonts/eot/IRANSansWeb_Medium.eot");
+  src: url("./fonts/eot/IRANSansWeb_Medium.eot?#iefix") format("embedded-opentype"), url("./fonts/woff2/IRANSansWeb_Medium.woff2") format("woff2"), url("./fonts/woff/IRANSansWeb_Medium.woff") format("woff"), url("./fonts/ttf/IRANSansWeb_Medium.ttf") format("truetype");
+}
+@font-face {
+  font-display: fallback;
+  font-family: IRANSans;
+  font-style: normal;
+  font-weight: 300;
+  src: url("./fonts/eot/IRANSansWeb_Light.eot");
+  src: url("./fonts/eot/IRANSansWeb_Light.eot?#iefix") format("embedded-opentype"), url("./fonts/woff2/IRANSansWeb_Light.woff2") format("woff2"), url("./fonts/woff/IRANSansWeb_Light.woff") format("woff"), url("./fonts/ttf/IRANSansWeb_Light.ttf") format("truetype");
+}
+@font-face {
+  font-display: fallback;
+  font-family: IRANSans;
+  font-style: normal;
+  font-weight: 200;
+  src: url("./fonts/eot/IRANSansWeb_UltraLight.eot");
+  src: url("./fonts/eot/IRANSansWeb_UltraLight.eot?#iefix") format("embedded-opentype"), url("./fonts/woff2/IRANSansWeb_UltraLight.woff2") format("woff2"), url("./fonts/woff/IRANSansWeb_UltraLight.woff") format("woff"), url("./fonts/ttf/IRANSansWeb_UltraLight.ttf") format("truetype");
+}
+@font-face {
+  font-display: fallback;
+  font-family: IRANSans;
+  font-style: normal;
+  font-weight: normal;
+  src: url("./fonts/eot/IRANSansWeb.eot");
+  src: url("./fonts/eot/IRANSansWeb.eot?#iefix") format("embedded-opentype"), url("./fonts/woff2/IRANSansWeb.woff2") format("woff2"), url("./fonts/woff/IRANSansWeb.woff") format("woff"), url("./fonts/ttf/IRANSansWeb.ttf") format("truetype");
+}
+* {
+  letter-spacing: 0 !important;
+}
+*[lang=fa] {
+  font-family: IRANSans !important;
+}
+*[lang=en] {
+  font-family: "Baloo Bhaijaan 2" !important;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  cursor: ew-resize;
+}
+
+.page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+@media (max-width: 600px) {
+  .page {
+    overflow: auto;
+  }
+}
+.page .page-logo {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  z-index: 2;
+  display: flex;
+}
+.page .page-logo #page-logo-img {
+  width: 120px;
+  height: auto;
+}
+
+.fade-appear,
+.fade-enter {
+  opacity: 0;
+  z-index: 1;
+}
+
+.fade-appear-active,
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 450ms linear 250ms;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit.fade-exit-active {
+  opacity: 0;
+  transition: opacity 150ms linear;
+}
+
+.dot-button {
+  background: #333333;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  position: absolute;
+  transform: translateX(-50%);
+  transition: left 1s, bottom 1s;
+  transition-delay: 1s;
+  animation: blinking 1.5s infinite alternate;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@keyframes blinking {
+  0% {
+    background-color: "#999999";
+  }
+  100% {
+    background-color: "#333333";
+  }
+}
+.text-transform-none {
+  text-transform: none;
+}/*# sourceMappingURL=general.css.map */

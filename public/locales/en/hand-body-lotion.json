@@ -1,0 +1,18 @@
+{
+  "title": "",
+  "description": "",
+  "variant": {
+    "0": {
+      "title": " Dafi lavender hand and face moisturizing cream for normal skin:",
+      "description": "<ul><li>Softens, restores and reduces inflammation, spots and redness of the skin and destroys acne-causing bacteria.</li><li>Retaining moisture and helping to produce skin cells, suitable for all skin types</li><li>Contains niacinamide, vitamin A, provitamin 5B, retinol, lavender extracts and shea butter.</li></ul>"
+    },
+    "1": {
+      "title": "Dafi avocado hand and face moisturizing cream for dry skin:",
+      "description": "<ul><li>Protects the skin, prevents dryness, sensitivity, itching and skin irritations</li><li>Deep moisturizing, nourishing and soothing skin and suitable for dry skin</li><li>Contains Eucerin, coconut, argan, avocado oils, shea butter and vitamin E</li></ul>"
+    },
+    "2": {
+      "title": "Dafi aloe vera hand and face moisturizing cream for oily skin:",
+      "description": "<ul><li>Helping heal sunburn, wounds and acne, building collagen and preventing skin aging</li><li>Moisturizing, protecting skin color and reducing blemishes, suitable for normal to oily skin</li><li>Contains hyaluronic acid, Eucerin, vitamin C, aloe vera extract, shea butter and Bisabolol</li></ul>"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+stages:
+  - build
+build:
+  stage: build
+  tags:
+    - develop
+  only:
+    - master
+  image: node
+  script:
+   - npm install
+   - sudo npm run build
+   - sudo rm -rf /home/www/dafi.catalogue.matican.work/*
+   - sudo cp build/* /home/www/dafi.catalogue.matican.work -R
+   - sudo rm build/ node_modules/ -rf 

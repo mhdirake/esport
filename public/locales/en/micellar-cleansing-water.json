@@ -1,0 +1,14 @@
+{
+  "title": "<h3>Dafi Facial make-up remover (micellar water)</h3>",
+  "description": " <ul> <li> Dafi micellar water is a very strong and effective solution to remove facial impurities, hydrates and increases the freshness and clarity of the skin. </li><li> Deep and fast cleanser of cosmetics, fat and dirt from the skin </li></ul>",
+  "variant": {
+    "0": {
+      "title": "Micellar water for normal to very dry skin",
+      "description": "<ul> <li> Contains hyaluronic acid, vitamins E and 5B to hydrate and maintain skin moisture </li><li> Enriched with cucumber and aloe vera extracts to nourish and rejuvenate, increases transparency, softness and freshness of the skin. </li></ul>"
+    },
+    "1": {
+      "title": "Micellar water for oily and acne prone skin",
+      "description": "<ul> <li> Controls the amount of skin oil and prevent acne </li><li> Contains hyaluronic acid, vitamins B5 and A, to hydrate and maintain skin moisture </li><li> Enriched with nutrients such as tea tree oil, cucumber, pomegranate and lemon extracts to increase clarity, softness and freshness of the skin. </li></ul>"
+    }
+  }
+}
