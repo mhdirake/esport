@@ -125,9 +125,9 @@ const ProductSwiperSlide = styled(SwiperSlide)(({ theme }) => ({
     padding: "0 96px",
   },
 
-  [theme.breakpoints.between(1024, 1200)]: {
-    padding: "0 72px",
-  },
+  // [theme.breakpoints.between(1024, 1200)]: {
+  //   padding: "0 72px",
+  // },
 }));
 
 export default Products;

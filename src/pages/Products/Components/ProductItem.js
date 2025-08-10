@@ -50,14 +50,13 @@ function ProductItem({
         </ImageWrapper>
 
         <TextWrapper>
-          <Typography
-            variant="h5"
+          <Title
             fontWeight={300}
             color={'primary.contrastText'}
           >
             لباسِ طرفداری؛ آیتم‌هایی که مالِ توست
-          </Typography>
-          <Typography
+          </Title>
+          <Subtitle
             variant="subtitle1"
             fontWeight={300}
             color={'primary.contrastText'}
@@ -65,8 +64,8 @@ function ProductItem({
             sx={{ maxWidth: '700px' }}
           >
             مرچ رسمی، باندل‌ها و محصولات لیمیتد
-          </Typography>
-          <Typography
+          </Subtitle>
+          <Description
             variant="subtitle2"
             fontWeight={300}
             color={'primary.contrastText'}
@@ -78,7 +77,7 @@ function ProductItem({
             توضیحات و گزینه‌های سایز/تعداد به‌نمایش در آمده‌اند. بخش پیشنهادات
             ویژه و پیگیری سفارش هم در دسترس شماست تا خرید راحت و قابل‌اطمینانی
             داشته باشید.
-          </Typography>
+          </Description>
 
           <Button variant={"text"} color={"primary"} sx={{mt: 3}}>
             مشاهده صفحه
@@ -89,6 +88,30 @@ function ProductItem({
   );
 }
 
+const Title = styled(Typography)(({theme}) => ({
+  fontSize: "22px",
+
+  [theme.breakpoints.down('md')]: {
+    fontSize: "16px"
+  }
+}))
+
+const Subtitle = styled(Typography)(({theme}) => ({
+  fontSize: "18px",
+
+  [theme.breakpoints.down('md')]: {
+    fontSize: "14px"
+  }
+}))
+
+const Description = styled(Typography)(({theme}) => ({
+  fontSize: "12px",
+  maxWidth: `600px !important`,
+
+  [theme.breakpoints.down('md')]: {
+    fontSize: "12px"
+  }
+}))
 const ImageWrapper = styled(Box)(({ isActive, theme, index }) => ({
   position: 'relative',
   display: 'flex',
