@@ -60,7 +60,7 @@ function Products() {
           modules={[Mousewheel, Keyboard, Pagination]}
           slidesPerView={1}
           mousewheel={true}
-          pagination={{ type: "fraction" }}
+          // pagination={{ type: "fraction" }}
           keyboard={true}
           scrollbar={{ draggable: true }}
           initialSlide={initialSlide}

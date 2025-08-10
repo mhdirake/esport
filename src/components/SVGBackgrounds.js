@@ -1,94 +1,109 @@
-import React from 'react';
+import React, { useState, useEffect, useMemo } from "react";
 
-function SVGBackgrounds({ bgColor }) {
+function SVGBackgrounds({ starColor = "#ffffff" }) {
+  const [shootingStar, setShootingStar] = useState(null);
+
+  const stars = useMemo(
+    () =>
+      Array.from({ length: 150 }, () => ({
+        x: Math.random() * 900,
+        y: Math.random() * 300,
+        size: Math.random() * 0.2 + 0.5,
+        delay: Math.random() * 5,
+      })),
+    []
+  );
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setShootingStar({
+        x: Math.random() * 900,
+        y: Math.random() * 300,
+      });
+      setTimeout(() => setShootingStar(null), 1000);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <>
       <svg
-        class="product-svg-one"
-        id="visual"
+        className="starry-background"
         viewBox="0 0 900 600"
         width="900"
         height="600"
         xmlns="http://www.w3.org/2000/svg"
-        version="1.1"
       >
-        <rect x="0" y="0" width="900" height="600" fill="transparent"></rect>
-        <g transform="translate(467.92781634340577 285.4350306887479)">
-          <path
-            d="
-        M-60,-80
-        h120
-        a20,20 0 0 1 20,20
-        v120
-        a20,20 0 0 1 -20,20
-        h-120
-        a20,20 0 0 1 -20,-20
-        v-120
-        a20,20 0 0 1 20,-20
-        z
-      "
-            fill="#ffffff30"
-          ></path>
+        <rect x="0" y="0" width="900" height="600" fill="transparent" />
+
+        {/* ستاره‌ها */}
+        <g fill={starColor}>
+          {stars.map((star, index) => (
+            <circle
+              key={index}
+              cx={star.x}
+              cy={star.y}
+              r={star.size}
+              fill={starColor}
+              style={{
+                animation: `blink 2s ease-in-out infinite, moveStar 6s ease-in-out infinite`,
+                animationDelay: `${star.delay}s`,
+              }}
+            />
+          ))}
         </g>
+
+        {/* شهاب‌سنگ */}
+        {shootingStar && (
+          <line
+            x1={shootingStar.x}
+            y1={shootingStar.y}
+            x2={shootingStar.x + 80}
+            y2={shootingStar.y + 20}
+            stroke={starColor}
+            strokeWidth="2"
+            style={{
+              animation: "shoot 0.8s linear forwards",
+            }}
+          />
+        )}
       </svg>
 
-      <svg
-        class="product-svg-two"
-        id="visual"
-        viewBox="0 0 900 600"
-        width="900"
-        height="600"
-        xmlns="http://www.w3.org/2000/svg"
-        version="1.1"
-      >
-        <rect x="0" y="0" width="900" height="600" fill="transparent"></rect>
-        <g transform="translate(467.92781634340577 285.4350306887479)">
-          <path
-            d="
-        M-60,-80
-        h120
-        a20,20 0 0 1 20,20
-        v120
-        a20,20 0 0 1 -20,20
-        h-120
-        a20,20 0 0 1 -20,-20
-        v-120
-        a20,20 0 0 1 20,-20
-        z
-      "
-            fill={bgColor}
-          ></path>
-        </g>
-      </svg>
+      <style jsx>{`
+        @keyframes blink {
+          0%, 100% {
+            opacity: 0.3;
+          }
+          50% {
+            opacity: 1;
+          }
+        }
 
-      <svg
-        class="product-svg-three"
-        id="visual"
-        viewBox="0 0 900 600"
-        width="900"
-        height="600"
-        xmlns="http://www.w3.org/2000/svg"
-        version="1.1"
-      >
-        <rect x="0" y="0" width="900" height="600" fill="transparent"></rect>
-        <g transform="translate(467.92781634340577 285.4350306887479)">
-          <path
-            d="
-        M-60,-80
-        h120
-        a20,20 0 0 1 20,20
-        v120
-        a20,20 0 0 1 -20,20
-        h-120
-        a20,20 0 0 1 -20,-20
-        v-120
-        a20,20 0 0 1 20,-20
-        z
-      "
-            fill="#ffffff60"
-          ></path>
-        </g>
-      </svg>
+        @keyframes moveStar {
+          0% {
+            transform: translate(0px, 0px);
+          }
+          50% {
+            transform: translate(0.5px, -0.5px);
+          }
+          100% {
+            transform: translate(0px, 0px);
+          }
+        }
+
+        @keyframes shoot {
+          0% {
+            opacity: 1;
+            stroke-width: 2px;
+          }
+          100% {
+            opacity: 0;
+            stroke-width: 0px;
+            transform: translateX(200px) translateY(40px);
+          }
+        }
+      `}</style>
     </>
   );
 }

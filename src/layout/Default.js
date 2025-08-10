@@ -1,27 +1,29 @@
-import { Box, MenuItem, TextField, styled, Link } from "@mui/material";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import {
+  Box,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  styled,
+} from '@mui/material';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import {
   Outlet as RouterOutlet,
-  matchRoutes,
   useLocation,
-  useNavigate,
-} from "react-router-dom";
-import { useEffect, useState } from "react";
+  Link as RouterLink,
+} from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
-import { ALL_LANGUAGES } from "constants/languages";
-import Loader from "pages/Products/Components/Loader";
-import dafiLogo from "assets/logo/logo-w.png";
-import routes from "routes";
-import { useTranslation } from "react-i18next";
+import Loader from 'pages/Products/Components/Loader';
+import { useTranslation } from 'react-i18next';
+
+// منوی استایل شده با position absolute
 
 function Default() {
   const location = useLocation();
-  const navigate = useNavigate();
-  const route = matchRoutes(routes(), location);
-  const isMainPage = route?.[0].pathname === location.pathname;
 
   const selectedLanguage =
-    location.pathname.split("/")?.[1] || process.env.REACT_APP_DEFAULT_LANGUAGE;
+    location.pathname.split('/')?.[1] || process.env.REACT_APP_DEFAULT_LANGUAGE;
 
   const [loading, setLoading] = useState(true);
 
@@ -31,21 +33,12 @@ function Default() {
     i18n.changeLanguage(selectedLanguage);
   }, [i18n, selectedLanguage]);
 
-
-  const handleChange = async (event) => {
-    const path =
-      (await location.pathname.split(`/${selectedLanguage}/`)?.[1]) || "";
-
-    navigate(`/${event.target.value}${path ? `/${path}` : ""}`);
-    i18n.changeLanguage(event.target.value);
-  };
-
   function checkImagesAreLoaded() {
     setLoading(true);
 
     setTimeout(() => {
       const loadedImages = [];
-      const images = document.getElementsByTagName("img");
+      const images = document.getElementsByTagName('img');
 
       if (images) {
         for (let i = 0; i < images.length; i++) {
@@ -71,18 +64,35 @@ function Default() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const allLanguages = process.env?.REACT_APP_LANGUAGES;
-  const formattedLanguages = allLanguages?.split(",") || [];
+  const menuItems = [
+    { label: 'تماس با ما', to: '/contact' },
+    { label: 'درباره ما', to: '/about' },
+    { label: 'خبرگزاری', to: '/news' },
+    { label: 'فروشگاه', to: '/store' },
+  ];
+
   return (
     <>
       <TransitionGroup>
         <CSSTransition key={location.key} timeout={450} classNames="fade">
-          <Box className="page">
-            <Loader loading={loading} />
+          <Box className="page" sx={{ position: 'relative' }}>
+            <MenuContainer>
+              <MenuList>
+                {menuItems.map((item) => (
+                  <ListItem key={item.to} disablePadding>
+                    <ListItemButton
+                      component={RouterLink}
+                      to={item.to}
+                      sx={{ borderRadius: 1 }}
+                    >
+                      <ListItemText primary={item.label} />
+                    </ListItemButton>
+                  </ListItem>
+                ))}
+              </MenuList>
+            </MenuContainer>
 
-            <Box className="page-logo">
-              <img src={dafiLogo} alt="dafi logo" id="page-logo-img" />
-            </Box>
+            <Loader loading={loading} />
 
             <RouterOutlet />
           </Box>
@@ -92,30 +102,30 @@ function Default() {
   );
 }
 
-const TextFieldSelect = styled(TextField)(() => ({
-  outline: "none !important",
+const MenuContainer = styled(Box)(({ theme }) => ({
+  position: 'absolute',
+  top: 20, 
+  left: "50%", 
+  zIndex: 1300, 
+  transform: "translateX(-50%)",
+  backgroundColor: "transparent",
+  borderRadius: theme.shape.borderRadius,
+  color: theme.palette.primary.main,
 
-  ".MuiSelect-select ": {
-    padding: "5px 15px !important",
-    outline: "none !important",
-    display: "flex",
-    alignItems: "center",
-  },
-  ".MuiPaper-root": {
-    background: "#f0f8ff00 !important",
-    boxShadow: "none !important",
-  },
-  fieldset: {
-    border: "none",
-  },
+  ".MuiButtonBase-root": {
+    padding: 0,
+    minWidth: "70px",
+
+    ".MuiTypography-root": {
+      fontSize: "14px"
+    }
+  }
 }));
 
-const BoxStyle = styled(Box)(({ isMainPage }) => {
-  return {
-    position: "fixed",
-    left: isMainPage ? "20px" : "100px",
-    top: isMainPage ? "20px" : "25px",
-    zIndex: "2",
-  };
+const MenuList = styled(List)({
+  display: 'flex',
+  gap: 16,
+  padding: 0,
 });
+
 export default Default;

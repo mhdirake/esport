@@ -1,4 +1,4 @@
-import { Box, styled, Typography } from '@mui/material';
+import { Box, Button, styled, Typography } from '@mui/material';
 import { ContentWrapper, ProductWrapper } from '../Styles';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -34,12 +34,12 @@ function ProductItem({
             alt=""
           />
 
-          <img
+          {/* <img
             class="product-image"
             onClick={() => navigate(`${location.pathname}${link}`)}
             src={productImage}
             alt="product"
-          />
+          /> */}
 
           <img
             class="right-side-image"
@@ -51,29 +51,38 @@ function ProductItem({
 
         <TextWrapper>
           <Typography
-            variant="h4"
-            fontWeight={500}
+            variant="h5"
+            fontWeight={300}
             color={'primary.contrastText'}
           >
-            معرفی باشگاه ورزشی سیمرغ
+            لباسِ طرفداری؛ آیتم‌هایی که مالِ توست
           </Typography>
           <Typography
-            variant="subtitle2"
-            fontWeight={500}
+            variant="subtitle1"
+            fontWeight={300}
             color={'primary.contrastText'}
             mt={2}
             sx={{ maxWidth: '700px' }}
           >
-            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
-            استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
-            ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز،
-            و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای
-            زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و
-            متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان
-            رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد
-            کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه
-            راهکارها، و شرایط سخت تایپ به پایان رسد
+            مرچ رسمی، باندل‌ها و محصولات لیمیتد
           </Typography>
+          <Typography
+            variant="subtitle2"
+            fontWeight={300}
+            color={'primary.contrastText'}
+            mt={2}
+            sx={{ maxWidth: '700px' }}
+            dir={"rtl"}
+          >
+            در فروشگاه محصولات ما شامل پیراهن‌ها، باندل‌ها و اقلام محدود با عکس،
+            توضیحات و گزینه‌های سایز/تعداد به‌نمایش در آمده‌اند. بخش پیشنهادات
+            ویژه و پیگیری سفارش هم در دسترس شماست تا خرید راحت و قابل‌اطمینانی
+            داشته باشید.
+          </Typography>
+
+          <Button variant={"text"} color={"primary"} sx={{mt: 3}}>
+            مشاهده صفحه
+          </Button>
         </TextWrapper>
       </ContentWrapper>
     </ProductWrapper>
@@ -197,17 +206,58 @@ export const ProductNameRight = styled(Box)(() => ({
 }));
 
 export const TextWrapper = styled(Box)(({ theme }) => ({
-  background:
-    ' linear-gradient(0deg,rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 26%, rgba(184, 247, 255, 0) 100%)',
   width: '100%',
   minWidth: '600px',
-  padding: theme.spacing(4),
+  padding: theme.spacing(12 , 4 , 4),
   textAlign: 'center',
   display: 'flex',
   flexDirection: 'column',
-  justifyContent: 'center',
+  justifyContent: 'end',
   alignItems: 'center',
   height: '50vh',
+  position: 'relative',
+
+  ".MuiTypography-root": {
+    zIndex: 1,
+  },
+
+  ':before': {
+    content: "''",
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    top: '0',
+    left: '0',
+    opacity: 1,
+    zIndex: 0,
+    boxShadow: '0px -243px 175px -32px black inset',
+    transform: 'none',
+  },
+
+ 
+  ':after': {
+    content: "''",
+    position: 'absolute',
+    width: '100vh',
+    height: '100vh',
+    background:
+      'url(https://img2.cgtrader.com/items/702173/682fad2a11/92k-moon-color-map-3d-model.jpg)',
+    top: '30%',
+    borderRadius: '50%',
+    zIndex: '-1',
+    animation: 'scrollBg 100s linear infinite',
+    boxShadow: "0 0px 130px 40px rgba(234, 205, 199, 0.6) inset,0 0px 23px 4px rgba(234, 205, 199, 0.6) inset,0 -10px 130px rgba(188, 143, 127, 0.6)",
+    transform: "rotateX(20.4deg)"
+  },
+
+  '@keyframes scrollBg': {
+    '0%': {
+      backgroundPositionY: '0px',
+    },
+    '100%': {
+      backgroundPositionY: '-1000px',
+    },
+  },
 }));
 
 export default ProductItem;
