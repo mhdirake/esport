@@ -111,28 +111,28 @@ export const ProductWrapper = styled(Box)(({ isActive, theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   flexDirection: 'column',
-  height: '100vh',
+  height: '100dvh',
   position: 'relative',
 
   '.random-object-1': {
     position: 'absolute',
-    top: isActive ? 'calc(50% - 100px)' : '100%',
+    top: isActive ? 'calc(50% - 210px)' : '100%',
     left: isActive ? 'calc(50% - 500px)' : '50%',
-    width: '180px',
-    transform: 'translate(-50%, -50%) rotateY(180deg)',
+    width: '200px',
+    transform: 'translate(-50%, -50%) rotateY(30deg)',
     animation: 'easy-motion-1',
     animationDuration: '50s',
     animationIterationCount: 'infinite',
     animationDirection: 'alternate',
     animationFillMode: 'both',
-    zIndex: isActive ? '1' : '-1',
+    // zIndex: isActive ? '1' : '-1',
     transition: 'all 3s',
     opacity: isActive ? 1 : 0,
 
     [theme.breakpoints.down('md')]: {
-      top: isActive ? 'calc(50% - 60px)' : '50%',
+      top: isActive ? 'calc(50% - 200px)' : '50%',
       left: isActive ? 'calc(50% - 120px)' : '50%',
-      width: '60px',
+      width: '90px',
     },
   },
 
@@ -141,7 +141,7 @@ export const ProductWrapper = styled(Box)(({ isActive, theme }) => ({
     top: isActive ? 'calc(50% - 100px)' : '100%',
     right: isActive ? 'calc(50% - 500px)' : '50%',
     width: '180px',
-    transform: 'rotateY(180deg)',
+    transform: 'rotateY(10deg)',
     zIndex: '-1',
     animation: 'easy-motion-2',
     animationDuration: '50s',
@@ -153,8 +153,8 @@ export const ProductWrapper = styled(Box)(({ isActive, theme }) => ({
 
     [theme.breakpoints.down('md')]: {
       transform: 'transform(-50%) rotateY(180deg)',
-      bottom: isActive ? 'calc(50% - 120px)' : '50%',
-      right: isActive ? 'calc(50% - 150px)' : '50%',
+      top: isActive ? 'calc(50% - 10px)' : '100%',
+      right: isActive ? 'calc(50% - 200px)' : '50%',
       width: '70px',
     },
   },
@@ -164,10 +164,20 @@ export const ProductWrapper = styled(Box)(({ isActive, theme }) => ({
     top: isActive ? 'calc(50% - 400px)' : '100%',
     right: isActive ? 'calc(50% - 500px)' : '50%',
     width: '100px',
-    zIndex: isActive ? '1' : '-1',
-    animation: 'easy-motion-2 200s infinite alternate',
+    // zIndex: isActive ? '1' : '-1',
+    animation: 'easy-motion-2',
+    animationDuration: '50s',
+    animationIterationCount: 'infinite',
+    animationDirection: 'alternate',
+    animationFillMode: 'both',
     transition: 'all 3s',
     opacity: isActive ? 1 : 0,
+    [theme.breakpoints.down('md')]: {
+      transform: 'transform(-50%)',
+      top: isActive ? 'calc(50% - 300px)' : '100%',
+      right: isActive ? 'calc(50% - 150px)' : '50%',
+      width: '80px',
+    },
   },
 
   '.random-object-4': {
@@ -175,14 +185,15 @@ export const ProductWrapper = styled(Box)(({ isActive, theme }) => ({
     bottom: isActive ? 'calc(50% - 200px)' : '0%',
     left: isActive ? 'calc(50% - 600px)' : '50%',
     width: '120px',
-    zIndex: isActive ? '1' : '-1',
+    // zIndex: isActive ? '1' : '-1',
     transition: 'all 3s',
     opacity: isActive ? 1 : 0,
 
     [theme.breakpoints.down('md')]: {
       transform: 'transform(-50%)',
-      bottom: isActive ? 'calc(50% - 120px)' : '50%',
-      left: isActive ? 'calc(50% - 140px)' : '50%',
+      bottom: isActive ? 'calc(50% - 100px)' : '50%',
+      left: isActive ? 'calc(50% - 200px)' : '50%',
+      width: '80px',
     },
   },
 
@@ -192,7 +203,7 @@ export const ProductWrapper = styled(Box)(({ isActive, theme }) => ({
     left: isActive ? 'calc(50% - 350px)' : '50%',
     transform: 'translateX(-50%)',
     width: '120px',
-    zIndex: isActive ? '1' : '-1',
+    // zIndex: isActive ? '1' : '-1',
     transition: 'all 3s ease-in-out',
     opacity: isActive ? 1 : 0,
   },
@@ -201,7 +212,7 @@ export const ProductWrapper = styled(Box)(({ isActive, theme }) => ({
     position: 'absolute',
     top: isActive ? '6px' : '50%',
     left: isActive ? '10px' : '50%',
-    zIndex: isActive ? '1' : '-1',
+    // zIndex: isActive ? '1' : '-1',
     transition: 'all 3s ease-in-out',
     transitionDelay: '2s',
     opacity: isActive ? 1 : 0,
@@ -209,10 +220,10 @@ export const ProductWrapper = styled(Box)(({ isActive, theme }) => ({
 
   '@keyframes easy-motion-1': {
     '0%': {
-      transform: 'translate(-50%, -50%) rotateY(180deg)',
+      transform: 'translate(-50%, -50%) rotate(10deg)',
     },
     '100%': {
-      transform: 'translate(-50%, -50%) rotateY(180deg) rotateZ(180deg)',
+      transform: 'translate(-50%, -50%) rotate(30deg) ',
     },
   },
 
@@ -225,7 +236,7 @@ export const ProductWrapper = styled(Box)(({ isActive, theme }) => ({
       },
     },
     '100%': {
-      transform: 'rotateY(180deg) rotateZ(-180deg)',
+      transform: 'rotateY(180deg) rotateZ(-40deg)',
 
       [theme.breakpoints.down('md')]: {
         transform: 'transform(-50%, -50%) rotateY(180deg) rotateZ(-180deg)',
@@ -259,6 +270,7 @@ export const ContentWrapper = styled(Box)(({ isActive, isPrev, isNext }) => ({
   flexDirection: 'column',
   width: '100%',
   height: '100%',
+  overflow: 'hidden',
 }));
 
 export const ProductName = styled(Box)(({ isActive }) => ({

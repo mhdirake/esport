@@ -73,7 +73,7 @@ function ProductItem({ isActive }) {
 const ProductWrapper = styled(Box)(({ isActive }) => ({
   background: "#FAEDE8",
   width: "100%",
-  height: "100vh",
+  height: "100dvh",
   overflow: "hidden",
   position: "relative",
   display: "flex",

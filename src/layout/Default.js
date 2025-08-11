@@ -9,30 +9,16 @@ import {
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import {
   Outlet as RouterOutlet,
-  useLocation,
   Link as RouterLink,
 } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import Loader from 'pages/Products/Components/Loader';
-import { useTranslation } from 'react-i18next';
 
 // منوی استایل شده با position absolute
 
 function Default() {
-  const location = useLocation();
-
-  const selectedLanguage =
-    location.pathname.split('/')?.[1] || process.env.REACT_APP_DEFAULT_LANGUAGE;
-
   const [loading, setLoading] = useState(true);
-
-  const { i18n } = useTranslation();
-
-  useEffect(() => {
-    i18n.changeLanguage(selectedLanguage);
-  }, [i18n, selectedLanguage]);
-
   function checkImagesAreLoaded() {
     setLoading(true);
 
@@ -65,16 +51,16 @@ function Default() {
   }, []);
 
   const menuItems = [
-    { label: 'تماس با ما', to: '/contact' },
-    { label: 'درباره ما', to: '/about' },
-    { label: 'خبرگزاری', to: '/news' },
-    { label: 'فروشگاه', to: '/store' },
+    { label: 'درباره ما', to: '/#about' },
+    { label: 'پخش زنده', to: '/#stream' },
+    { label: 'تیم ما', to: '/#team' },
+    { label: 'فروشگاه', to: '/#shop' },
   ];
 
   return (
     <>
       <TransitionGroup>
-        <CSSTransition key={location.key} timeout={450} classNames="fade">
+        <CSSTransition timeout={450} classNames="fade">
           <Box className="page" sx={{ position: 'relative' }}>
             <MenuContainer>
               <MenuList>
@@ -117,7 +103,8 @@ const MenuContainer = styled(Box)(({ theme }) => ({
     minWidth: "70px",
 
     ".MuiTypography-root": {
-      fontSize: "14px"
+      fontSize: "14px",
+      textAlign: "center",
     }
   }
 }));

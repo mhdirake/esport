@@ -1,6 +1,5 @@
 import { Box, Button, styled, Typography } from '@mui/material';
 import { ContentWrapper, ProductWrapper } from '../Styles';
-import { useLocation, useNavigate } from 'react-router-dom';
 
 function ProductItem({
   isActive,
@@ -13,17 +12,21 @@ function ProductItem({
   productRightImage,
   color,
   index,
+  title,
+  subtitle,
+  description,
+  shadow1,
+  shadow2,
+  shadow3,
 }) {
-  const navigate = useNavigate();
-  const location = useLocation();
-
   return (
     <ProductWrapper isActive={isActive} color={color}>
       <img class="random-object-1" src={randomObjects?.[0]} alt="product" />
       <img class="random-object-2" src={randomObjects?.[1]} alt="product" />
       <img class="random-object-3" src={randomObjects?.[2]} alt="product" />
-      <img class="random-object-4" src={randomObjects?.[3]} alt="product" />
-      <img class="random-object-5" src={randomObjects?.[4]} alt="product" />
+      {randomObjects?.[3] && (
+        <img class="random-object-4" src={randomObjects?.[3]} alt="product" />
+      )}
 
       <ContentWrapper isActive={isActive} isPrev={isPrev} isNext={isNext}>
         <ImageWrapper isActive={isActive} index={index}>
@@ -34,12 +37,7 @@ function ProductItem({
             alt=""
           />
 
-          {/* <img
-            class="product-image"
-            onClick={() => navigate(`${location.pathname}${link}`)}
-            src={productImage}
-            alt="product"
-          /> */}
+          <img class="product-image" src={productImage} alt="product" />
 
           <img
             class="right-side-image"
@@ -49,37 +47,33 @@ function ProductItem({
           />
         </ImageWrapper>
 
-        <TextWrapper>
-          <Title
-            fontWeight={300}
-            color={'primary.contrastText'}
-          >
-            لباسِ طرفداری؛ آیتم‌هایی که مالِ توست
-          </Title>
-          <Subtitle
-            variant="subtitle1"
-            fontWeight={300}
-            color={'primary.contrastText'}
-            mt={2}
-            sx={{ maxWidth: '700px' }}
-          >
-            مرچ رسمی، باندل‌ها و محصولات لیمیتد
-          </Subtitle>
-          <Description
-            variant="subtitle2"
-            fontWeight={300}
-            color={'primary.contrastText'}
-            mt={2}
-            sx={{ maxWidth: '700px' }}
-            dir={"rtl"}
-          >
-            در فروشگاه محصولات ما شامل پیراهن‌ها، باندل‌ها و اقلام محدود با عکس،
-            توضیحات و گزینه‌های سایز/تعداد به‌نمایش در آمده‌اند. بخش پیشنهادات
-            ویژه و پیگیری سفارش هم در دسترس شماست تا خرید راحت و قابل‌اطمینانی
-            داشته باشید.
-          </Description>
+        <TextWrapper shadow1={shadow1} shadow3={shadow3} shadow2={shadow2}>
+          {isActive && (
+            <>
+              <Title fontWeight={500} color={'primary.contrastText'}>
+                {title}
+              </Title>
+              <Subtitle
+                variant="subtitle1"
+                fontWeight={300}
+                color={'primary.contrastText'}
+                mt={2}
+              >
+                {subtitle}
+              </Subtitle>
+              <Description
+                variant="subtitle2"
+                fontWeight={300}
+                color={'primary.contrastText'}
+                mt={2}
+                dir={'rtl'}
+              >
+                {description}
+              </Description>
+            </>
+          )}
 
-          <Button variant={"text"} color={"primary"} sx={{mt: 3}}>
+          <Button variant={'text'} color={'primary'} sx={{ mt: 3 }}>
             مشاهده صفحه
           </Button>
         </TextWrapper>
@@ -88,30 +82,57 @@ function ProductItem({
   );
 }
 
-const Title = styled(Typography)(({theme}) => ({
-  fontSize: "22px",
+const Title = styled(Typography)(({ theme }) => ({
+  fontSize: '22px',
+  animation: 'fadeIn',
+  animationDuration: '0.5s',
+  animationDelay: '0.5s',
+  animationFillMode: 'forwards',
+  opacity: 0,
+  textShadow: "0px -1px 4px black",
 
   [theme.breakpoints.down('md')]: {
-    fontSize: "16px"
-  }
-}))
+    fontSize: '16px',
+  },
 
-const Subtitle = styled(Typography)(({theme}) => ({
-  fontSize: "18px",
+  '@keyframes fadeIn': {
+    '0%': {
+      opacity: '0',
+    },
+    '100%': {
+      opacity: '1',
+    },
+  },
+}));
+
+const Subtitle = styled(Typography)(({ theme }) => ({
+  fontSize: '18px',
+  animation: 'fadeIn',
+  animationDuration: '0.5s',
+  animationDelay: '0.8s',
+  animationFillMode: 'forwards',
+  opacity: 0,
+  textShadow: "0px -1px 4px black",
 
   [theme.breakpoints.down('md')]: {
-    fontSize: "14px"
-  }
-}))
+    fontSize: '12px',
+  },
+}));
 
-const Description = styled(Typography)(({theme}) => ({
-  fontSize: "12px",
+const Description = styled(Typography)(({ theme }) => ({
+  fontSize: '12px',
   maxWidth: `600px !important`,
+  animation: 'fadeIn',
+  animationDuration: '0.5s',
+  animationDelay: '1.1s',
+  animationFillMode: 'forwards',
+  opacity: 0,
+  textShadow: "0px -1px 4px black",
 
   [theme.breakpoints.down('md')]: {
-    fontSize: "12px"
-  }
-}))
+    fontSize: '12px',
+  },
+}));
 const ImageWrapper = styled(Box)(({ isActive, theme, index }) => ({
   position: 'relative',
   display: 'flex',
@@ -124,19 +145,20 @@ const ImageWrapper = styled(Box)(({ isActive, theme, index }) => ({
   },
 
   '.product-image': {
-    flex: '0 0 40%',
-    maxWidth: isActive ? '400px' : '200px',
-    maxHeight: '400px',
+    maxWidth: '600px',
+    maxHeight: '600px',
     objectFit: 'contain',
     height: 'auto',
-    transition: 'width 0.2s',
-    zIndex: '1',
-    position: 'relative',
+    transition: 'opacity 1s',
+    position: 'absolute',
+    zIndex: '-1',
     cursor: 'pointer',
+    opacity: isActive ? 1 : 0,
 
     [theme.breakpoints.down('md')]: {
-      width: isActive ? '200px' : '80px',
-      maxHeight: '200px',
+      width: isActive ? '350px' : '80px',
+      height: 'auto',
+      bottom: '-500%',
     },
   },
 
@@ -228,59 +250,62 @@ export const ProductNameRight = styled(Box)(() => ({
   },
 }));
 
-export const TextWrapper = styled(Box)(({ theme }) => ({
-  width: '100%',
-  minWidth: '600px',
-  padding: theme.spacing(12 , 4 , 4),
-  textAlign: 'center',
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'end',
-  alignItems: 'center',
-  height: '50vh',
-  position: 'relative',
-
-  ".MuiTypography-root": {
-    zIndex: 1,
-  },
-
-  ':before': {
-    content: "''",
-    position: 'absolute',
+export const TextWrapper = styled(Box)(
+  ({ theme, shadow1, shadow2, shadow3 }) => ({
     width: '100%',
-    height: '100%',
-    top: '0',
-    left: '0',
-    opacity: 1,
-    zIndex: 0,
-    boxShadow: '0px -243px 175px -32px black inset',
-    transform: 'none',
-  },
+    padding: theme.spacing(12, 4, 4),
+    textAlign: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'end',
+    alignItems: 'center',
+    height: '50vh',
+    position: 'relative',
 
- 
-  ':after': {
-    content: "''",
-    position: 'absolute',
-    width: '100vh',
-    height: '100vh',
-    background:
-      'url(https://img2.cgtrader.com/items/702173/682fad2a11/92k-moon-color-map-3d-model.jpg)',
-    top: '30%',
-    borderRadius: '50%',
-    zIndex: '-1',
-    animation: 'scrollBg 100s linear infinite',
-    boxShadow: "0 0px 130px 40px rgba(234, 205, 199, 0.6) inset,0 0px 23px 4px rgba(234, 205, 199, 0.6) inset,0 -10px 130px rgba(188, 143, 127, 0.6)",
-    transform: "rotateX(20.4deg)"
-  },
+    '.MuiTypography-root': {
+      zIndex: 1,
+    },
 
-  '@keyframes scrollBg': {
-    '0%': {
-      backgroundPositionY: '0px',
+    ':before': {
+      content: "''",
+      position: 'absolute',
+      width: '100%',
+      height: '100%',
+      top: '0',
+      left: '0',
+      opacity: 1,
+      zIndex: 0,
+      boxShadow: '0px -243px 175px -32px black inset',
+      transform: 'none',
+      [theme.breakpoints.down('md')]: {
+        boxShadow: '0px -213px 123px -70px black inset',
+      },
     },
-    '100%': {
-      backgroundPositionY: '-1000px',
+
+    ':after': {
+      content: "''",
+      position: 'absolute',
+      width: '100dvh',
+      height: '100dvh',
+      background:
+        'url(https://img2.cgtrader.com/items/702173/682fad2a11/92k-moon-color-map-3d-model.jpg)',
+      top: '30%',
+      borderRadius: '50%',
+      zIndex: '-1',
+      animation: 'scrollBg 100s linear infinite',
+      boxShadow: `0 0px 130px 40px ${shadow1} inset,0 0px 23px 4px ${shadow2} inset,0 -10px 130px ${shadow3}`,
+      transform: 'rotateX(20.4deg)',
     },
-  },
-}));
+
+    '@keyframes scrollBg': {
+      '0%': {
+        backgroundPositionY: '0px',
+      },
+      '100%': {
+        backgroundPositionY: '-1000px',
+      },
+    },
+  })
+);
 
 export default ProductItem;

@@ -5,7 +5,7 @@ import ReactDOM from "react-dom/client";
 import { ThemeProvider } from "@mui/material";
 // import reportWebVitals from "./reportWebVitals";
 import theme from "config/theme/theme";
-import "config/i18next";
+// import "config/i18next";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

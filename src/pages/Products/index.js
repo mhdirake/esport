@@ -10,39 +10,11 @@ import { SwiperWrapper } from "./Styles";
 import { mainSliders } from "./constants";
 import { styled } from "@mui/material";
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
 
 function Products() {
   const initialSlide = sessionStorage.getItem("slide") || "0";
 
   // eslint-disable-next-line no-unused-vars
-  const t = useTranslation([
-    "introduction",
-    "adult-wipe",
-    "antioxidant-make-up-remover",
-    "baby-wet-wipe",
-    "baby-wet-wipe-sensitive",
-    "bath-clean",
-    "deep-nourishing-cream",
-    "eye-make-up-remover",
-    "face-wash",
-    "foot-care-vaseline",
-    "hair-mask",
-    "hand-body-lotion",
-    "herbal-deodorant",
-    "household-cleansing",
-    "intimate-wipe",
-    "make-up-remover",
-    "micellar-cleansing-water",
-    "perfume-cream",
-    "q10-flower",
-    "q10-fruit",
-    "quick-polish-remover",
-    "royal-beauty",
-    "water-wipes-antibacterial",
-    "wet-wipes-kisses-on-baby",
-    "vaseline",
-  ]);
 
   const [bgColor, setBgColor] = useState(mainSliders[0].variants[0].color);
   const [showBackgroundTransition, setShowBackgroundTransition] =
@@ -94,6 +66,12 @@ function Products() {
                   productImage={slider.variants[0].image}
                   productLeftImage={slider.bigImageTitle}
                   productRightImage={slider.bigImageDescription}
+                  title={slider.title}
+                  subtitle={slider.subtitle}
+                  description={slider.description}
+                  shadow1={slider.variants[0].shadow1}
+                  shadow2={slider.variants[0].shadow2}
+                  shadow3={slider.variants[0].shadow3}
                   {...slide}
                 />
               )}
@@ -121,9 +99,9 @@ const ProductOverviewSwiper = styled(Swiper)(({ theme }) => ({
 }));
 
 const ProductSwiperSlide = styled(SwiperSlide)(({ theme }) => ({
-  [theme.breakpoints.between(900, 1024)]: {
-    padding: "0 96px",
-  },
+  // [theme.breakpoints.between(900, 1024)]: {
+  //   padding: "0 96px",
+  // },
 
   // [theme.breakpoints.between(1024, 1200)]: {
   //   padding: "0 72px",

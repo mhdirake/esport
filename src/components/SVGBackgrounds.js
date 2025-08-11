@@ -3,12 +3,16 @@ import React, { useState, useEffect, useMemo } from "react";
 function SVGBackgrounds({ starColor = "#ffffff" }) {
   const [shootingStar, setShootingStar] = useState(null);
 
+  const width = window.innerWidth 
+  const height = window.innerHeight 
+
+
   const stars = useMemo(
     () =>
       Array.from({ length: 150 }, () => ({
-        x: Math.random() * 900,
-        y: Math.random() * 300,
-        size: Math.random() * 0.2 + 0.5,
+        x: Math.random() * width,
+        y: Math.random() * height,
+        size: Math.random() * 0.8 + 0.9,
         delay: Math.random() * 5,
       })),
     []
@@ -17,8 +21,8 @@ function SVGBackgrounds({ starColor = "#ffffff" }) {
   useEffect(() => {
     const interval = setInterval(() => {
       setShootingStar({
-        x: Math.random() * 900,
-        y: Math.random() * 300,
+       x: Math.random() * width,
+        y: Math.random() * height,
       });
       setTimeout(() => setShootingStar(null), 1000);
     }, 4000);
@@ -30,12 +34,12 @@ function SVGBackgrounds({ starColor = "#ffffff" }) {
     <>
       <svg
         className="starry-background"
-        viewBox="0 0 900 600"
-        width="900"
-        height="600"
+        viewBox={`0 0 ${width} ${height}`}
+        width={width}
+        height={height}
         xmlns="http://www.w3.org/2000/svg"
       >
-        <rect x="0" y="0" width="900" height="600" fill="transparent" />
+        <rect x="0" y="0" width={width} height={height} fill="transparent" />
 
         {/* ستاره‌ها */}
         <g fill={starColor}>
