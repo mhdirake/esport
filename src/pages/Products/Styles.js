@@ -229,17 +229,17 @@ export const ProductWrapper = styled(Box)(({ isActive, theme }) => ({
 
   '@keyframes easy-motion-2': {
     '0%': {
-      transform: 'rotateY(180deg)',
+      transform: '',
 
       [theme.breakpoints.down('md')]: {
-        transform: 'transform(-50%, -50%) rotateY(180deg)',
+        transform: 'transform(-50%, -50%) ',
       },
     },
     '100%': {
-      transform: 'rotateY(180deg) rotateZ(-40deg)',
+      transform: ' rotateZ(-40deg)',
 
       [theme.breakpoints.down('md')]: {
-        transform: 'transform(-50%, -50%) rotateY(180deg) rotateZ(-180deg)',
+        transform: 'transform(-50%, -50%)  rotateZ(-180deg)',
       },
     },
   },

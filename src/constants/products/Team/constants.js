@@ -10,6 +10,7 @@ export const Team = {
   description: "در این صفحه پروفایل هر بازیکن و کادر فنی به‌همراه نقش، سابقه و هایلایت‌های ویدیویی قابل مشاهده است. امکان فیلتر بر اساس بازی یا نقش وجود دارد تا سریع‌تر به بازیکن موردنظر برسید.",
   bigImage: team,
   link: "/products/team",
+  page: "team",
   variants: [
     {
       image: team,

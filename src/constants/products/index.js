@@ -4,8 +4,8 @@ import { Team } from "./Team/constants";
 import { About } from "./About/constants";
 
 export const ALL_PAGES = {
-  "shop": Shop,
-  "team": Team,
+  "about": About,
   "stream": Stream,
-  "about": About
+  "team": Team,
+  "shop": Shop,
 };

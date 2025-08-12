@@ -9,6 +9,7 @@ export const About = {
   description: "در این بخش می‌توانید با ماموریت، ارزش‌ها و مسیر شکل‌گیری سازمان آشنا شوید. همچنین معرفی کوتاهی از بنیان‌گذاران و دستاوردهای مهم وجود دارد تا تصویر روشنی از تاریخچه و هدف ما به دست بیاورید",
   bigImage: about,
   link: "/products/about",
+  page: "about",
   variants: [
     {
       image: about,

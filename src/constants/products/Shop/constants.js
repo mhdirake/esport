@@ -13,6 +13,7 @@ export const Shop = {
             داشته باشید.`,
   bigImage: march,
   link: '/products/lip-balm',
+  page: 'shop',
   variants: [
     {
       image: march,

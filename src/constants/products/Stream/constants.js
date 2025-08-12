@@ -10,6 +10,7 @@ export const Stream = {
   description: "هاب پخش شامل استریم‌های جاری، برنامهٔ پخش آینده، ویدیوهای ضبط‌شده و هایلایت‌هاست. پلیر، لینک چت و اطلاعات مسابقه کنار ویدیو قرار دارد تا تجربهٔ تماشای شما کامل باشد",
   bigImage: stream,
   link: "/products/stream",
+  page: "stream",
   variants: [
     {
       image: stream,
