@@ -1,0 +1,9 @@
+version: "3"
+services:
+  react:
+    image: simurgh/catalog:latest
+    container_name: simurgh_catalog
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+
