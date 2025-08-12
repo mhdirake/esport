@@ -103,6 +103,10 @@ const Title = styled(Typography)(({ theme }) => ({
     fontSize: '16px',
   },
 
+  [theme.breakpoints.up('xl')]: {
+    fontSize: '24px',
+  },
+
   '@keyframes fadeIn': {
     '0%': {
       opacity: '0',
@@ -122,6 +126,10 @@ const Subtitle = styled(Typography)(({ theme }) => ({
   opacity: 0,
   textShadow: '0px -1px 4px black',
 
+  [theme.breakpoints.up('xl')]: {
+    fontSize: '20px',
+  },
+
   [theme.breakpoints.down('md')]: {
     fontSize: '12px',
   },
@@ -137,7 +145,16 @@ const Description = styled(Typography)(({ theme }) => ({
   opacity: 0,
   textShadow: '0px -1px 4px black',
 
-  [theme.breakpoints.down('md')]: {
+  [theme.breakpoints.up('xl')]: {
+    fontSize: '16px',
+    maxWidth: `700px !important`,
+  },
+
+  [theme.breakpoints.down('xl')]: {
+    fontSize: '14px',
+  },
+
+  [theme.breakpoints.down('sm')]: {
     fontSize: '12px',
   },
 }));
