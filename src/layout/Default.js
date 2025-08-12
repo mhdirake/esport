@@ -47,10 +47,9 @@ function Default() {
 
   useEffect(() => {
     checkImagesAreLoaded();
-    if(!currentPage) {
-       setSearchParams({ page: 'shop' }); 
+    if (!currentPage) {
+      setSearchParams({ page: 'shop' });
     }
-    
   }, []);
 
   const menuItems = [
@@ -65,13 +64,13 @@ function Default() {
       <CSSTransition timeout={450} classNames="fade">
         <Box className="page" sx={{ position: 'relative' }}>
           <MenuContainer>
-            <MenuList>
+            <MenuList key={currentPage}>
               {menuItems.map((item) => (
                 <ListItem key={item.page} disablePadding>
                   <ListItemButton
                     component={RouterLink}
                     to={`/?page=${item.page}`}
-                    selected={currentPage === item.page} // ✅ Active state check
+                    selected={currentPage === item.page}
                     sx={{ borderRadius: 1 }}
                   >
                     <ListItemText primary={item.label} />
@@ -107,6 +106,10 @@ const MenuContainer = styled(Box)(({ theme }) => ({
     '.MuiTypography-root': {
       fontSize: '14px',
       textAlign: 'center',
+      
+      [theme.breakpoints.down('sm')]: {
+        fontSize: '12px',
+      },
     },
   },
 }));
@@ -115,6 +118,10 @@ const MenuList = styled(List)(({ theme }) => ({
   display: 'flex',
   gap: 16,
   padding: 0,
+
+  [theme.breakpoints.down('sm')]: {
+    gap: 0,
+  },
 
   '.Mui-selected': {
     position: 'relative',
@@ -137,12 +144,8 @@ const MenuList = styled(List)(({ theme }) => ({
       backgroundSize: '300% 300%',
       animation: 'minimalFire 3s ease-in-out infinite',
       zIndex: -1,
-      filter: 'blur(4px)', // softer glow
-      opacity: 0.3, // subtle
-    },
-
-    '&:hover': {
-      transform: 'scale(1.02)',
+      filter: 'blur(4px)',
+      opacity: 0.3,
     },
   },
 
