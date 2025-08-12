@@ -1,4 +1,4 @@
-FROM node:18.06.0 as builder
+FROM node:18.6.0 AS builder
 WORKDIR /app
 COPY ./package.json ./
 RUN npm install 
