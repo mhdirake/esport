@@ -119,13 +119,10 @@ export const ProductWrapper = styled(Box)(({ isActive, theme }) => ({
     top: isActive ? 'calc(50% - 210px)' : '100%',
     left: isActive ? 'calc(50% - 500px)' : '50%',
     width: '200px',
-    transform: 'translate(-50%, -50%) rotateY(30deg)',
-    animation: 'easy-motion-1',
-    animationDuration: '50s',
-    animationIterationCount: 'infinite',
-    animationDirection: 'alternate',
-    animationFillMode: 'both',
-    // zIndex: isActive ? '1' : '-1',
+    transform: 'translate(-50%, -50%) rotateY(10deg)',
+    animation: isActive
+      ? `easy-motion-1-${isActive ? 'active' : 'inactive'} 20s infinite alternate ease-in-out`
+      : 'none',
     transition: 'all 3s',
     opacity: isActive ? 1 : 0,
 
@@ -141,18 +138,14 @@ export const ProductWrapper = styled(Box)(({ isActive, theme }) => ({
     top: isActive ? 'calc(50% - 100px)' : '100%',
     right: isActive ? 'calc(50% - 500px)' : '50%',
     width: '180px',
-    transform: 'rotateY(10deg)',
     zIndex: '-1',
-    animation: 'easy-motion-2',
-    animationDuration: '50s',
-    animationIterationCount: 'infinite',
-    animationDirection: 'alternate',
-    animationFillMode: 'both',
+    animation: isActive
+      ? `easy-motion-2-${isActive ? 'active' : 'inactive'} 20s infinite alternate ease-in-out`
+      : 'none',
     transition: 'all 5s',
     opacity: isActive ? 1 : 0,
 
     [theme.breakpoints.down('md')]: {
-      transform: 'transform(-50%) rotateY(180deg)',
       top: isActive ? 'calc(50% - 10px)' : '100%',
       right: isActive ? 'calc(50% - 200px)' : '50%',
       width: '70px',
@@ -164,16 +157,13 @@ export const ProductWrapper = styled(Box)(({ isActive, theme }) => ({
     top: isActive ? 'calc(50% - 400px)' : '100%',
     right: isActive ? 'calc(50% - 500px)' : '50%',
     width: '100px',
-    // zIndex: isActive ? '1' : '-1',
-    animation: 'easy-motion-2',
-    animationDuration: '50s',
-    animationIterationCount: 'infinite',
-    animationDirection: 'alternate',
-    animationFillMode: 'both',
+    animation: isActive
+      ? `easy-motion-2-${isActive ? 'active' : 'inactive'} 20s infinite alternate ease-in-out`
+      : 'none',
     transition: 'all 3s',
     opacity: isActive ? 1 : 0,
+
     [theme.breakpoints.down('md')]: {
-      transform: 'transform(-50%)',
       top: isActive ? 'calc(50% - 300px)' : '100%',
       right: isActive ? 'calc(50% - 150px)' : '50%',
       width: '80px',
@@ -183,65 +173,31 @@ export const ProductWrapper = styled(Box)(({ isActive, theme }) => ({
   '.random-object-4': {
     position: 'absolute',
     bottom: isActive ? 'calc(50% - 200px)' : '0%',
-    left: isActive ? 'calc(50% - 600px)' : '50%',
+    left: isActive ? 'calc(50% - 500px)' : '50%',
     width: '120px',
-    // zIndex: isActive ? '1' : '-1',
+    animation: isActive
+      ? `easy-motion-1-${isActive ? 'active' : 'inactive'} 20s infinite alternate ease-in-out`
+      : 'none',
     transition: 'all 3s',
     opacity: isActive ? 1 : 0,
 
     [theme.breakpoints.down('md')]: {
-      transform: 'transform(-50%)',
       bottom: isActive ? 'calc(50% - 100px)' : '50%',
       left: isActive ? 'calc(50% - 200px)' : '50%',
       width: '80px',
     },
   },
 
-  '.random-object-5': {
-    position: 'absolute',
-    top: isActive ? '90px' : '50%',
-    left: isActive ? 'calc(50% - 350px)' : '50%',
-    transform: 'translateX(-50%)',
-    width: '120px',
-    // zIndex: isActive ? '1' : '-1',
-    transition: 'all 3s ease-in-out',
-    opacity: isActive ? 1 : 0,
+  '@keyframes easy-motion-1-active': {
+    '0%': { transform: 'translate(-50%, -50%) translateY(0px) rotate(0deg)' },
+    '50%': { transform: 'translate(-50%, -50%) translateY(-10px) rotate(-15deg)' },
+    '100%': { transform: 'translate(-50%, -50%) translateY(0px) rotate(-30deg)' },
   },
 
-  '.random-object-6': {
-    position: 'absolute',
-    top: isActive ? '6px' : '50%',
-    left: isActive ? '10px' : '50%',
-    // zIndex: isActive ? '1' : '-1',
-    transition: 'all 3s ease-in-out',
-    transitionDelay: '2s',
-    opacity: isActive ? 1 : 0,
-  },
-
-  '@keyframes easy-motion-1': {
-    '0%': {
-      transform: 'translate(-50%, -50%) rotate(10deg)',
-    },
-    '100%': {
-      transform: 'translate(-50%, -50%) rotate(30deg) ',
-    },
-  },
-
-  '@keyframes easy-motion-2': {
-    '0%': {
-      transform: '',
-
-      [theme.breakpoints.down('md')]: {
-        transform: 'transform(-50%, -50%) ',
-      },
-    },
-    '100%': {
-      transform: ' rotateZ(-40deg)',
-
-      [theme.breakpoints.down('md')]: {
-        transform: 'transform(-50%, -50%)  rotateZ(-180deg)',
-      },
-    },
+  '@keyframes easy-motion-2-active': {
+    '0%': { transform: 'translate(0, 0) translateY(0px) rotate(0deg)' },
+    '50%': { transform: 'translate(0, -8px) rotate(15deg)' },
+    '100%': { transform: 'translate(0, 0) translateY(0px) rotate(30deg)' },
   },
 }));
 
