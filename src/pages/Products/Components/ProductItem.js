@@ -154,11 +154,17 @@ const ImageWrapper = styled(Box)(({ isActive, theme, index }) => ({
     zIndex: '-1',
     cursor: 'pointer',
     opacity: isActive ? 1 : 0,
-    marginTop: "30px",
+    marginTop: '30px',
     [theme.breakpoints.down('md')]: {
       width: isActive ? '350px' : '80px',
       height: 'auto',
-      bottom: '-430%',
+      transform: "translateY(26%)"
+    },
+    [theme.breakpoints.up('md')]: {
+      transform: "translateY(0%)"
+    },
+    [theme.breakpoints.up('xl')]: {
+      transform: "translateY(5%)"
     },
   },
 
