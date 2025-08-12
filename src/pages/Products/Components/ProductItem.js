@@ -89,7 +89,7 @@ const Title = styled(Typography)(({ theme }) => ({
   animationDelay: '0.5s',
   animationFillMode: 'forwards',
   opacity: 0,
-  textShadow: "0px -1px 4px black",
+  textShadow: '0px -1px 4px black',
 
   [theme.breakpoints.down('md')]: {
     fontSize: '16px',
@@ -112,7 +112,7 @@ const Subtitle = styled(Typography)(({ theme }) => ({
   animationDelay: '0.8s',
   animationFillMode: 'forwards',
   opacity: 0,
-  textShadow: "0px -1px 4px black",
+  textShadow: '0px -1px 4px black',
 
   [theme.breakpoints.down('md')]: {
     fontSize: '12px',
@@ -127,7 +127,7 @@ const Description = styled(Typography)(({ theme }) => ({
   animationDelay: '1.1s',
   animationFillMode: 'forwards',
   opacity: 0,
-  textShadow: "0px -1px 4px black",
+  textShadow: '0px -1px 4px black',
 
   [theme.breakpoints.down('md')]: {
     fontSize: '12px',
@@ -154,11 +154,11 @@ const ImageWrapper = styled(Box)(({ isActive, theme, index }) => ({
     zIndex: '-1',
     cursor: 'pointer',
     opacity: isActive ? 1 : 0,
-
+    marginTop: "30px",
     [theme.breakpoints.down('md')]: {
       width: isActive ? '350px' : '80px',
       height: 'auto',
-      bottom: '-500%',
+      bottom: '-430%',
     },
   },
 
