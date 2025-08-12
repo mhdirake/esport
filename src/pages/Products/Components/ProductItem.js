@@ -27,6 +27,9 @@ function ProductItem({
       {randomObjects?.[3] && (
         <img class="random-object-4" src={randomObjects?.[3]} alt="product" />
       )}
+      {randomObjects?.[4] && (
+        <img class="random-object-5" src={randomObjects?.[4]} alt="product" />
+      )}
 
       <ContentWrapper isActive={isActive} isPrev={isPrev} isNext={isNext}>
         <ImageWrapper isActive={isActive} index={index}>
@@ -37,7 +40,11 @@ function ProductItem({
             alt=""
           />
 
-          <img class="product-image" src={productImage} alt="product" />
+          <img
+            class={`product-image ${index === 4 ? 'home' : ''}`}
+            src={productImage}
+            alt="product"
+          />
 
           <img
             class="right-side-image"
@@ -72,10 +79,11 @@ function ProductItem({
               </Description>
             </>
           )}
-
-          <Button variant={'text'} color={'primary'} sx={{ mt: 3 }}>
-            مشاهده صفحه
-          </Button>
+          {/* {index !== 4 && (
+            <Button variant={'text'} color={'primary'} sx={{ mt: 3 }}>
+              مشاهده صفحه
+            </Button>
+          )} */}
         </TextWrapper>
       </ContentWrapper>
     </ProductWrapper>
@@ -144,6 +152,16 @@ const ImageWrapper = styled(Box)(({ isActive, theme, index }) => ({
     flexDirection: 'column',
   },
 
+  '.product-image.home': {
+    [theme.breakpoints.down('md')]: {
+      width: isActive ? '350px' : '80px',
+      height: 'auto',
+      transform: 'translateY(26%)',
+    },
+    [theme.breakpoints.up('md')]: {
+      transform: 'translateY(-5%)',
+    },
+  },
   '.product-image': {
     maxWidth: '600px',
     maxHeight: '600px',
@@ -158,13 +176,16 @@ const ImageWrapper = styled(Box)(({ isActive, theme, index }) => ({
     [theme.breakpoints.down('md')]: {
       width: isActive ? '350px' : '80px',
       height: 'auto',
-      transform: "translateY(26%)"
+      transform: 'translateY(26%)',
+    },
+    [theme.breakpoints.down('sm')]: {
+      transform: 'translateY(20%)',
     },
     [theme.breakpoints.up('md')]: {
-      transform: "translateY(0%)"
+      transform: 'translateY(0%)',
     },
     [theme.breakpoints.up('xl')]: {
-      transform: "translateY(5%)"
+      transform: 'translateY(5%)',
     },
   },
 

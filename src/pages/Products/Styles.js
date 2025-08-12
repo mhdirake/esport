@@ -121,7 +121,9 @@ export const ProductWrapper = styled(Box)(({ isActive, theme }) => ({
     width: '200px',
     transform: 'translate(-50%, -50%) rotateY(10deg)',
     animation: isActive
-      ? `easy-motion-1-${isActive ? 'active' : 'inactive'} 20s infinite alternate ease-in-out`
+      ? `easy-motion-1-${
+          isActive ? 'active' : 'inactive'
+        } 20s infinite alternate ease-in-out`
       : 'none',
     transition: 'all 3s',
     opacity: isActive ? 1 : 0,
@@ -140,7 +142,9 @@ export const ProductWrapper = styled(Box)(({ isActive, theme }) => ({
     width: '180px',
     zIndex: '-1',
     animation: isActive
-      ? `easy-motion-2-${isActive ? 'active' : 'inactive'} 20s infinite alternate ease-in-out`
+      ? `easy-motion-2-${
+          isActive ? 'active' : 'inactive'
+        } 20s infinite alternate ease-in-out`
       : 'none',
     transition: 'all 5s',
     opacity: isActive ? 1 : 0,
@@ -158,7 +162,9 @@ export const ProductWrapper = styled(Box)(({ isActive, theme }) => ({
     right: isActive ? 'calc(50% - 500px)' : '50%',
     width: '100px',
     animation: isActive
-      ? `easy-motion-2-${isActive ? 'active' : 'inactive'} 20s infinite alternate ease-in-out`
+      ? `easy-motion-2-${
+          isActive ? 'active' : 'inactive'
+        } 20s infinite alternate ease-in-out`
       : 'none',
     transition: 'all 3s',
     opacity: isActive ? 1 : 0,
@@ -176,7 +182,9 @@ export const ProductWrapper = styled(Box)(({ isActive, theme }) => ({
     left: isActive ? 'calc(50% - 500px)' : '50%',
     width: '120px',
     animation: isActive
-      ? `easy-motion-1-${isActive ? 'active' : 'inactive'} 20s infinite alternate ease-in-out`
+      ? `easy-motion-1-${
+          isActive ? 'active' : 'inactive'
+        } 20s infinite alternate ease-in-out`
       : 'none',
     transition: 'all 3s',
     opacity: isActive ? 1 : 0,
@@ -188,10 +196,34 @@ export const ProductWrapper = styled(Box)(({ isActive, theme }) => ({
     },
   },
 
+  '.random-object-5': {
+    position: 'absolute',
+    top: isActive ? 'calc(50% - 300px)' : '100%',
+    left: isActive ? '50%' : '50%',
+    width: '120px',
+    animation: isActive
+      ? `easy-motion-1-${
+          isActive ? 'active' : 'inactive'
+        } 20s infinite alternate ease-in-out`
+      : 'none',
+    transition: 'all 3s',
+    opacity: isActive ? 1 : 0,
+
+    [theme.breakpoints.down('md')]: {
+      top: isActive ? 'calc(50% - 300px)' : '100%',
+      left: isActive ? '50%' : '50%',
+      width: '80px',
+    },
+  },
+
   '@keyframes easy-motion-1-active': {
     '0%': { transform: 'translate(-50%, -50%) translateY(0px) rotate(0deg)' },
-    '50%': { transform: 'translate(-50%, -50%) translateY(-10px) rotate(-15deg)' },
-    '100%': { transform: 'translate(-50%, -50%) translateY(0px) rotate(-30deg)' },
+    '50%': {
+      transform: 'translate(-50%, -50%) translateY(-10px) rotate(-15deg)',
+    },
+    '100%': {
+      transform: 'translate(-50%, -50%) translateY(0px) rotate(-30deg)',
+    },
   },
 
   '@keyframes easy-motion-2-active': {

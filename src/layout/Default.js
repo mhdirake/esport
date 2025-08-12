@@ -48,7 +48,7 @@ function Default() {
   useEffect(() => {
     checkImagesAreLoaded();
     if (!currentPage) {
-      setSearchParams({ page: 'shop' });
+      setSearchParams({ page: 'home' });
     }
   }, []);
 
@@ -57,6 +57,7 @@ function Default() {
     { label: 'پخش زنده', page: 'stream' },
     { label: 'تیم ما', page: 'team' },
     { label: 'فروشگاه', page: 'shop' },
+    { label: 'صفحه اصلی', page: 'home' },
   ];
 
   return (
@@ -101,12 +102,15 @@ const MenuContainer = styled(Box)(({ theme }) => ({
 
   '.MuiButtonBase-root': {
     padding: 0,
-    minWidth: '70px',
+    minWidth: '80px',
+    [theme.breakpoints.down('sm')]: {
+      minWidth: '70px',
+    },
 
     '.MuiTypography-root': {
       fontSize: '14px',
       textAlign: 'center',
-      
+
       [theme.breakpoints.down('sm')]: {
         fontSize: '12px',
       },
